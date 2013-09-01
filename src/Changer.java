@@ -9,11 +9,16 @@ public class Changer {
 		
 		FileFinder tester = new FileFinder();
 		File cat= new File("C:/test");
-		String ext = new String(".txt");
+		String ext = new String(".odt");
+	
 		
 		tester.FindFile(cat,ext);
-		tester.wypisz();
+	//	tester.wypisz();
 		
+		
+		FileChanger test = new FileChanger();
+		
+		test.ChangeFile(tester.filesfound, "japa", "beczka");
 	}
 
 }

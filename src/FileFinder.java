@@ -11,6 +11,7 @@ public class FileFinder {
 	// KONTSTRUKTOR
 	FileFinder(){
 		filesfound = new ArrayList<String>();
+
 	}
 		
 	
