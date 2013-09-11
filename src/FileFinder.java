@@ -8,16 +8,17 @@ public class FileFinder {
 	ArrayList<String> filesfound;
 	
 	
-	// KONTSTRUKTOR
-	FileFinder(){
+	FileFinder(String path, String extension){
 		filesfound = new ArrayList<String>();
-
+		File catalog = new File(path);
+		FindFile(catalog,extension);
 	}
 		
-	
-	// FindFile dodaje do pustego atrybutu filesfound œcie¿ki znalezionych plików
-	
+
 	void FindFile(File catalog, String extension){
+		
+		// dodaæ sprawdzenie kropki
+		
 		
 		File[] list;
 		list=catalog.listFiles();
@@ -34,16 +35,6 @@ public class FileFinder {
 					}
 				}			
 			}		
-	}
-	
-	
-	
-	// Metoda Wypisz tymczaso - u³atwia pracê
-	void wypisz(){
-		
-		for (String s: filesfound){
-			System.out.println(s);
-		}
 	}
 	
 

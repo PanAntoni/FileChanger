@@ -5,7 +5,7 @@ import java.util.*;
 public class FileChanger {
 
 	
-	//KOSTRUKTOR
+
 	FileChanger(){
 		
 		
@@ -56,8 +56,7 @@ public class FileChanger {
 				String line;
 				line = reader.readLine();
 				while (line != null){
-						line=line.replaceAll(changefrom, changeto);
-						System.out.println(line);
+					line=line.replaceAll(changefrom, changeto);
 					newfile.add(line);
 					line = reader.readLine();
 				}
