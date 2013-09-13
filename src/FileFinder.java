@@ -6,20 +6,26 @@ public class FileFinder {
 
 	
 	ArrayList<String> filesfound;
-	
+	int exists;
 	
 	FileFinder(String path, String extension){
+		exists=1;
 		filesfound = new ArrayList<String>();
 		File catalog = new File(path);
-		FindFile(catalog,extension);
+		if (catalog.exists()){
+			FindFile(catalog,extension);
+		}
+		else{
+			exists=0;
+		}
 	}
 		
 
 	void FindFile(File catalog, String extension){
 		
-		// dodaæ sprawdzenie kropki
-		
-		
+		if(!extension.startsWith(".")){
+			extension="."+extension;
+		}
 		File[] list;
 		list=catalog.listFiles();
 	
@@ -32,10 +38,11 @@ public class FileFinder {
 					
 					if (file.getName().contains(extension)){			
 					filesfound.add(file.getAbsolutePath());
-					}
-				}			
-			}		
+				}
+			}			
+		}		
 	}
+	
 	
 
 }

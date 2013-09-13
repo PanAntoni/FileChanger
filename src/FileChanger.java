@@ -4,11 +4,11 @@ import java.util.*;
 
 public class FileChanger {
 
-	
+	int howmanyfiles;
 
 	FileChanger(){
 		
-		
+		howmanyfiles=0;
 		
 	}
 	
@@ -44,15 +44,14 @@ public class FileChanger {
 	
 	void ChangeFile(ArrayList<String> foundfiles, String changefrom, String changeto){
 		
-		for (String s: foundfiles){                  //pêtla po wszystkich znalezionych plikach
-			
+		for (String s: foundfiles){                 
 			if(CheckFile(s,changefrom)){
-			
+			howmanyfiles=howmanyfiles+1;
 			try {
 				
-				ArrayList<String> newfile = new ArrayList<String>();           //lista linijek nowego pliku
+				ArrayList<String> newfile = new ArrayList<String>();       
 				
-				BufferedReader reader = new BufferedReader(new FileReader(new File(s)));         //zczytywanie i zamienianie w nowym newfile
+				BufferedReader reader = new BufferedReader(new FileReader(new File(s)));   
 				String line;
 				line = reader.readLine();
 				while (line != null){
@@ -63,7 +62,7 @@ public class FileChanger {
 				
 				
 				
-				PrintWriter writer= new PrintWriter(new File(s));                     //zapisywanie na miejsce starego pliku
+				PrintWriter writer= new PrintWriter(new File(s));                    
 				 for (String newline : newfile){
 					 
 					 writer.println(newline);

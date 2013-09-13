@@ -14,10 +14,6 @@ public class UserInt extends JFrame implements ActionListener {
 	private JTextField changeFrom;
 	private JTextField changeTo;
 	
-	public String ext;
-	public String cFrom;
-	public String cTo;
-	
 	UserInt(){
 	
 	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -39,7 +35,7 @@ public class UserInt extends JFrame implements ActionListener {
 	}
 	add(label,c);
 	
-	path = new JTextField("C:\\");
+	path = new JTextField("");
 	path.addActionListener(this);
 	{
 		c.weightx = 0.5;
@@ -136,9 +132,31 @@ public class UserInt extends JFrame implements ActionListener {
 		Object source = e.getSource();
 		
 		if (source == button){
-			FileFinder finder = new FileFinder(path.getText(),extension.getText());
-			FileChanger changer = new FileChanger();
-			changer.ChangeFile(finder.filesfound, changeFrom.getText(), changeTo.getText());
+			if ((extension.getText()!=null && !extension.getText().isEmpty())  &&  (changeFrom.getText()!=null && !changeFrom.getText().isEmpty())  &&	(changeTo.getText()!=null && !changeTo.getText().isEmpty())  && 	(path.getText()!=null && !path.getText().isEmpty()) && !path.getText().endsWith(":\\") )
+				{
+				FileFinder finder = new FileFinder(path.getText(),extension.getText());
+				if (finder.exists==1){
+					FileChanger changer = new FileChanger();
+					changer.ChangeFile(finder.filesfound, changeFrom.getText(), changeTo.getText());
+					JOptionPane message = new JOptionPane();
+					message.showMessageDialog(null,"Liczba zmienionych plików: "+changer.howmanyfiles);
+				}
+				else{
+					JOptionPane message = new JOptionPane();
+					message.showMessageDialog(null,"Podana œcie¿ka nie istnieje.");
+				}
+			}
+			else{
+				
+				if (path.getText().endsWith(":\\")){
+					JOptionPane message = new JOptionPane();
+					message.showMessageDialog(null,"Nie mo¿na przeskanowaæ ca³ego dysku "+path.getText().charAt(0));
+				}
+				else{
+					JOptionPane message = new JOptionPane();
+					message.showMessageDialog(null,"Uzupe³nij wszystkie pola");
+				}
+			}
 		}
 
 	}
